@@ -9,5 +9,9 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.tvNickname.text = intent.getStringExtra("name")
+        binding.tvId.text = intent.getStringExtra("id")
+        binding.tvMbti.text = intent.getStringExtra("mbti")
     }
 }
