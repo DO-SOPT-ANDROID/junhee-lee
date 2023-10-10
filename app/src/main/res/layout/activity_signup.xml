@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_name"
+                    android:id="@+id/tv_signup_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -48,7 +48,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/et_name"
+                    android:id="@+id/et_signup_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
@@ -57,10 +57,10 @@
                     android:inputType="text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_name" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_signup_name" />
 
                 <TextView
-                    android:id="@+id/tv_id"
+                    android:id="@+id/tv_signup_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -69,11 +69,11 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_name" />
+                    app:layout_constraintTop_toBottomOf="@id/et_signup_name" />
 
 
                 <EditText
-                    android:id="@+id/et_id"
+                    android:id="@+id/et_signup_id"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
@@ -82,10 +82,10 @@
                     android:inputType="text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_id" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_signup_id" />
 
                 <TextView
-                    android:id="@+id/tv_pw"
+                    android:id="@+id/tv_signup_pw"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -94,10 +94,10 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_id" />
+                    app:layout_constraintTop_toBottomOf="@id/et_signup_id" />
 
                 <EditText
-                    android:id="@+id/et_pw"
+                    android:id="@+id/et_signup_pw"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
@@ -106,10 +106,10 @@
                     android:inputType="textPassword"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_pw" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_signup_pw" />
 
                 <TextView
-                    android:id="@+id/tv_mbti"
+                    android:id="@+id/tv_signup_mbti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -118,10 +118,10 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/et_pw" />
+                    app:layout_constraintTop_toBottomOf="@id/et_signup_pw" />
 
                 <EditText
-                    android:id="@+id/et_mbti"
+                    android:id="@+id/et_signup_mbti"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
@@ -130,7 +130,7 @@
                     android:inputType="text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mbti" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_signup_mbti" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>
