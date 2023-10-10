@@ -10,6 +10,10 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        initMainPageSetting()
+    }
+
+    private fun initMainPageSetting() {
         binding.tvNickname.text = intent.getStringExtra("name")
         binding.tvId.text = intent.getStringExtra("id")
         binding.tvMbti.text = intent.getStringExtra("mbti")
