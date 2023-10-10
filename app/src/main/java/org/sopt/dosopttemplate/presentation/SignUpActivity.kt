@@ -2,10 +2,12 @@ package org.sopt.dosopttemplate.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.entity.sign.SignInfo
 import org.sopt.dosopttemplate.databinding.ActivitySignupBinding
 import sopt.uni.util.binding.BindingActivity
+import sopt.uni.util.extension.hideKeyboard
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.showSnackbar
 
@@ -15,6 +17,13 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
         setContentView(binding.root)
 
         clickSignUpEnd()
+        clickLayout()
+    }
+
+    private fun clickLayout() {
+        binding.layoutSignup.setOnSingleClickListener {
+            hideKeyboard(currentFocus ?: View(this))
+        }
     }
 
     private fun clickSignUpEnd() {

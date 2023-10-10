@@ -2,6 +2,7 @@ package org.sopt.dosopttemplate.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import org.sopt.dosopttemplate.R
@@ -9,6 +10,7 @@ import org.sopt.dosopttemplate.data.entity.sign.SignInfo
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
 import org.sopt.dosopttemplate.presentation.SignUpActivity.Companion.SIGN_INFO
 import sopt.uni.util.binding.BindingActivity
+import sopt.uni.util.extension.hideKeyboard
 import sopt.uni.util.extension.parcelable
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.showSnackbar
@@ -28,6 +30,13 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         setResultSignUp()
         moveToSignUp()
         clickLoginButton()
+        clickLayout()
+    }
+
+    private fun clickLayout() {
+        binding.layoutLogin.setOnSingleClickListener {
+            hideKeyboard(currentFocus ?: View(this))
+        }
     }
 
     private fun setResultSignUp() {
