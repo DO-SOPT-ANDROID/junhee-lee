@@ -2,6 +2,7 @@ package org.sopt.dosopttemplate.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.datasource.local.DoSoptStorage
 import org.sopt.dosopttemplate.data.entity.sign.SignInfo
@@ -10,8 +11,22 @@ import org.sopt.dosopttemplate.presentation.LoginActivity.Companion.SIGN_INFO
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.parcelable
 import sopt.uni.util.extension.setOnSingleClickListener
+import sopt.uni.util.extension.showToast
 
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
+
+    private var backPressedTime = 0L
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            if (System.currentTimeMillis() - backPressedTime <= 2000) {
+                finish()
+            } else {
+                backPressedTime = System.currentTimeMillis()
+                showToast(getString(R.string.application_terminate))
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +34,11 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
         initMainPageSetting()
         logout()
+        finishApplication()
+    }
+
+    private fun finishApplication() {
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
     private fun initMainPageSetting() {
