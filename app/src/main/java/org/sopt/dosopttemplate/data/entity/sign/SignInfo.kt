@@ -5,8 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class SignInfo(
-    val id: String,
-    val password: String,
-    val name: String,
-    val mbti: String,
+    val id: String = "",
+    val password: String = "",
+    val name: String = "",
+    val mbti: String = "",
 ) : Parcelable
