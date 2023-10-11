@@ -76,12 +76,12 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     }
 
     private fun checkLoginValid(): Boolean {
-        if (binding.etLoginId.text.toString() == signData.id && binding.etLoginPw.text.toString() == signData.password) {
+        return if (binding.etLoginId.text.toString() == signData.id && binding.etLoginPw.text.toString() == signData.password) {
             saveSignInfo()
-            return true
+            true
         } else {
             showToast(getString(R.string.login_fail))
-            return false
+            false
         }
     }
 
