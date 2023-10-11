@@ -5,6 +5,7 @@ import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import org.sopt.dosopttemplate.R
@@ -22,6 +23,19 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private lateinit var signData: SignInfo
+    private var backPressedTime = 0L
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            if (System.currentTimeMillis() - backPressedTime <= 2000) {
+                finish()
+            } else {
+                backPressedTime = System.currentTimeMillis()
+                showToast(getString(R.string.application_terminate))
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -31,6 +45,11 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         moveToSignUp()
         clickLoginButton()
         clickLayout()
+        finishApplication()
+    }
+
+    private fun finishApplication() {
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
     private fun autoLogin() {
