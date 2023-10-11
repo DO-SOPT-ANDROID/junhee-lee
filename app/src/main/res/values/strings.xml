@@ -30,7 +30,7 @@
     <string name="mainpage_id">ID</string>
     <string name="mainpage_mbti">MBTI</string>
     <string name="mainpage_description">아 졸려어어어어어어ㅓ어어어어어어ㅓ어엉어ㅓㅇ엉</string>
-
+    <string name="login_auto">로그인 상태 유지</string>
 
 
 </resources>

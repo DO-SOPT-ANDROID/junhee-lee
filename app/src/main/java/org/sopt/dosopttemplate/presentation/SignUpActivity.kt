@@ -6,6 +6,7 @@ import android.view.View
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.entity.sign.SignInfo
 import org.sopt.dosopttemplate.databinding.ActivitySignupBinding
+import org.sopt.dosopttemplate.presentation.LoginActivity.Companion.SIGN_INFO
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.hideKeyboard
 import sopt.uni.util.extension.setOnSingleClickListener
@@ -31,10 +32,10 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
             if (isValidateForm()) {
                 val intent = Intent(this, LoginActivity::class.java)
                 val signInfo = SignInfo(
-                    binding.etId.text.toString(),
-                    binding.etPw.text.toString(),
-                    binding.etName.text.toString(),
-                    binding.etMbti.text.toString(),
+                    binding.etSignupId.text.toString(),
+                    binding.etSignupPw.text.toString(),
+                    binding.etSignupName.text.toString(),
+                    binding.etSignupMbti.text.toString(),
                 )
                 intent.putExtra(SIGN_INFO, signInfo)
                 setResult(RESULT_OK, intent)
@@ -46,10 +47,10 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
     }
 
     private fun isValidateForm(): Boolean {
-        val id = binding.etId.text.toString()
-        val pw = binding.etPw.text.toString()
-        val name = binding.etName.text.toString()
-        val mbti = binding.etMbti.text.toString()
+        val id = binding.etSignupId.text.toString()
+        val pw = binding.etSignupPw.text.toString()
+        val name = binding.etSignupName.text.toString()
+        val mbti = binding.etSignupMbti.text.toString()
 
         return isValidateId(id) && isValidatePassWord(pw) && isValidateNickName(name) &&
             isValidateMbti(mbti)
@@ -69,9 +70,5 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
 
     private fun isValidateMbti(mbti: String): Boolean {
         return mbti.isNotBlank()
-    }
-
-    companion object {
-        const val SIGN_INFO = "sign_info"
     }
 }
