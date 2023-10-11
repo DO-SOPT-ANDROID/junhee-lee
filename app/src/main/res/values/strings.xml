@@ -11,6 +11,7 @@
     <string name="login_btn_signup">회원가입</string>
     <string name="login_success">로그인 성공</string>
     <string name="login_fail">로그인 실패</string>
+    <string name="login_auto">로그인 상태 유지</string>
 
     <!-- 회원가입 페이지 -->
     <string name="signup_title">SIGN UP</string>
@@ -30,7 +31,7 @@
     <string name="mainpage_id">ID</string>
     <string name="mainpage_mbti">MBTI</string>
     <string name="mainpage_description">아 졸려어어어어어어ㅓ어어어어어어ㅓ어엉어ㅓㅇ엉</string>
-    <string name="login_auto">로그인 상태 유지</string>
+    <string name="mainpage_logout"><u>로그아웃</u></string>
 
 
 </resources>
