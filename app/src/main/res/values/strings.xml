@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">DoSoptTemplate</string>
     <string name="application_terminate">\'뒤로\' 버튼 한 번 더 누르면 종료됩니다.</string>
+    <string name="binding_error">에러가 발생했습니다</string>
 
     <!-- 로그인 페이지 -->
     <string name="login_title">Welcome to SOPT</string>
