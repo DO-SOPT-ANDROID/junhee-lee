@@ -14,7 +14,7 @@
         android:theme="@style/Theme.DoSoptTemplate"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.LoginActivity"
+            android:name=".presentation.auth.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
@@ -26,14 +26,14 @@
         </activity>
 
         <activity
-            android:name=".presentation.HomeActivity"
+            android:name=".presentation.home.HomeActivity"
             android:exported="true"
             android:screenOrientation="portrait">
 
         </activity>
 
         <activity
-            android:name=".presentation.SignUpActivity"
+            android:name=".presentation.auth.SignUpActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">

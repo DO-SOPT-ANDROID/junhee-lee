@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.HomeActivity">
+        tools:context=".presentation.home.HomeActivity">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_mainpage_profil"
@@ -19,7 +19,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img"
+            android:src="@drawable/img_my_profile"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
