@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.presentation
+package org.sopt.dosopttemplate.presentation.auth
 
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -8,10 +8,12 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.datasource.local.DoSoptStorage
 import org.sopt.dosopttemplate.data.entity.sign.SignInfo
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
+import org.sopt.dosopttemplate.presentation.home.HomeActivity
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.hideKeyboard
 import sopt.uni.util.extension.parcelable
@@ -19,6 +21,7 @@ import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.showSnackbar
 import sopt.uni.util.extension.showToast
 
+@AndroidEntryPoint
 class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
@@ -111,11 +114,11 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     }
 
     private fun moveToMainPage(userData: SignInfo) {
-//        val intent = Intent(this, MainActivity::class.java)
-//        showToast(getString(R.string.login_success))
-//        intent.putExtra(SIGN_INFO, userData)
-//        intent.addFlags(FLAG_ACTIVITY_CLEAR_TASK or FLAG_ACTIVITY_NEW_TASK)
-//        startActivity(intent)
+        val intent = Intent(this, HomeActivity::class.java)
+        showToast(getString(R.string.login_success))
+        intent.putExtra(SIGN_INFO, userData)
+        intent.addFlags(FLAG_ACTIVITY_CLEAR_TASK or FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
     private fun moveToSignUp() {

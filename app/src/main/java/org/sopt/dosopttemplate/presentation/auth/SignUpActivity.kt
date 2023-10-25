@@ -1,17 +1,19 @@
-package org.sopt.dosopttemplate.presentation
+package org.sopt.dosopttemplate.presentation.auth
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.entity.sign.SignInfo
 import org.sopt.dosopttemplate.databinding.ActivitySignupBinding
-import org.sopt.dosopttemplate.presentation.LoginActivity.Companion.SIGN_INFO
+import org.sopt.dosopttemplate.presentation.auth.LoginActivity.Companion.SIGN_INFO
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.hideKeyboard
 import sopt.uni.util.extension.setOnSingleClickListener
 import sopt.uni.util.extension.showSnackbar
 
+@AndroidEntryPoint
 class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_signup) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.HomeActivity">
+        tools:context=".presentation.home.HomeActivity">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_mainpage_profil"
@@ -19,7 +19,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img"
+            android:src="@drawable/img_my_profile"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -32,7 +32,7 @@
             android:layout_marginStart="16dp"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_mainpage_profil"
+            app:layout_constraintBottom_toBottomOf="@id/iv_mainpage_profil"
             app:layout_constraintStart_toEndOf="@id/iv_mainpage_profil"
             app:layout_constraintTop_toTopOf="@id/iv_mainpage_profil"
             tools:text="이준희" />
@@ -46,7 +46,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/mainpage_description"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_mainpage_nickname"
+            app:layout_constraintBottom_toBottomOf="@id/tv_mainpage_nickname"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_mainpage_nickname"
             app:layout_constraintTop_toTopOf="@id/tv_mainpage_nickname" />
