@@ -28,8 +28,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_signup_end"
-            app:layout_constraintTop_toBottomOf="@+id/tv_signup_title">
+            app:layout_constraintBottom_toTopOf="@id/btn_signup_end"
+            app:layout_constraintTop_toBottomOf="@id/tv_signup_title">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

@@ -111,11 +111,11 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     }
 
     private fun moveToMainPage(userData: SignInfo) {
-        val intent = Intent(this, MainActivity::class.java)
-        showToast(getString(R.string.login_success))
-        intent.putExtra(SIGN_INFO, userData)
-        intent.addFlags(FLAG_ACTIVITY_CLEAR_TASK or FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
+//        val intent = Intent(this, MainActivity::class.java)
+//        showToast(getString(R.string.login_success))
+//        intent.putExtra(SIGN_INFO, userData)
+//        intent.addFlags(FLAG_ACTIVITY_CLEAR_TASK or FLAG_ACTIVITY_NEW_TASK)
+//        startActivity(intent)
     }
 
     private fun moveToSignUp() {
