@@ -1,23 +1,17 @@
 package org.sopt.dosopttemplate.presentation.mypage
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.data.datasource.local.DoSoptStorage
-import org.sopt.dosopttemplate.data.entity.sign.SignInfo
 import org.sopt.dosopttemplate.databinding.FragmentMypageBinding
-import org.sopt.dosopttemplate.presentation.auth.LoginActivity
-import org.sopt.dosopttemplate.presentation.auth.LoginActivity.Companion.SIGN_INFO
 import org.sopt.dosopttemplate.util.binding.BindingFragment
-import sopt.uni.util.extension.setOnSingleClickListener
 
 class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // initMainPageSetting()
-        //logout()
+        // initMainPageSetting()
+        // logout()
     }
 
 //    private fun initMainPageSetting() {
