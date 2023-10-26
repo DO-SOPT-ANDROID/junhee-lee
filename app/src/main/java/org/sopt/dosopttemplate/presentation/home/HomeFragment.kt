@@ -13,6 +13,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private val homeAdapter by lazy { HomeAdapter() }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initHome()
+    }
+
+    private fun initHome() {
         val homeProfileList = DummyProfile().mockProfileList
         binding.rvHome.adapter = homeAdapter
         homeAdapter.submitList(homeProfileList)
