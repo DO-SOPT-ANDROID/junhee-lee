@@ -40,6 +40,14 @@
 
         </activity>
 
+        <activity
+            android:name=".presentation.home.HomeProfileDetailActivity"
+            android:exported="false"
+            android:screenOrientation="fullSensor"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
+
     </application>
 
 </manifest>
