@@ -1,5 +1,6 @@
 package org.sopt.dosopttemplate.presentation.home
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -10,21 +11,39 @@ import org.sopt.dosopttemplate.util.binding.BindingFragment
 
 @AndroidEntryPoint
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private val homeAdapter by lazy { HomeAdapter() }
-
+    private val homeRvAdapter by lazy { HomeRecyclerAdapter() }
+    private val homeVpAdapter by lazy { HomeVpAdapter() }
+    private val isLandscape by lazy { resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE }
     private val homeViewModel by activityViewModels<HomeViewModel>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateHome()
+        setAdapter()
         getProfileList()
     }
 
-    private fun updateHome() {
-        binding.rvHome.adapter = homeAdapter
+    private fun setAdapter() {
+        if (isLandscape) {
+            binding.vpHome.adapter = homeVpAdapter
+            binding.vpHome.visibility = View.VISIBLE
+            binding.rvHome.visibility = View.GONE
+            binding.springDotsIndicator.attachTo(binding.vpHome)
+        } else {
+            binding.rvHome.adapter = homeRvAdapter
+            binding.rvHome.visibility = View.VISIBLE
+            binding.vpHome.visibility = View.GONE
+            binding.springDotsIndicator.visibility = View.GONE
+        }
+
         homeViewModel.profileData.observe(viewLifecycleOwner) { profileList ->
-            homeAdapter.submitList(profileList)
+            if (isLandscape) {
+                homeVpAdapter.submitList(profileList)
+            } else {
+                homeRvAdapter.submitList(profileList)
+            }
         }
     }
+
 
     private fun getProfileList() {
         homeViewModel.getProfileList()
@@ -33,4 +52,5 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     fun goToTop() {
         binding.rvHome.smoothScrollToPosition(0)
     }
+
 }
