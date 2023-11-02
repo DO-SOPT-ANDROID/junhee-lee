@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_vp_home_myprofile"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/img_my_profile" />
+
+    <TextView
+        android:id="@+id/tv_vp_home_my_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/iv_vp_home_myprofile"
+        app:layout_constraintTop_toTopOf="@id/iv_vp_home_myprofile"
+        tools:text="이준희" />
+
+    <TextView
+        android:id="@+id/tv_vp_home_state_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_grey_line"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="3dp"
+        android:text="@string/home_add_state_message"
+        app:layout_constraintBottom_toBottomOf="@id/tv_vp_home_my_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_vp_home_my_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

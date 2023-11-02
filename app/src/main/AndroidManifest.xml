@@ -16,7 +16,7 @@
         <activity
             android:name=".presentation.auth.LoginActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,14 +28,14 @@
         <activity
             android:name=".presentation.home.HomeActivity"
             android:exported="false"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
 
         </activity>
 
         <activity
             android:name=".presentation.auth.SignUpActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:windowSoftInputMode="adjustResize">
 
         </activity>

@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.entity.home.Profile
-import org.sopt.dosopttemplate.databinding.ItemHomeFriendProfileBinding
-import org.sopt.dosopttemplate.databinding.ItemHomeMyproileBinding
+import org.sopt.dosopttemplate.databinding.ItemVpHomeFriendProfileBinding
+import org.sopt.dosopttemplate.databinding.ItemVpHomeMyprofileBinding
 import sopt.uni.util.extension.ItemDiffCallback
 
-class HomeAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
+class HomeVpAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
     ItemDiffCallback<Profile>(
         onItemsTheSame = { old, new -> old.name == new.name },
         onContentsTheSame = { old, new -> old == new },
@@ -21,7 +21,7 @@ class HomeAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             MY_PROFILE_TYPE -> {
-                val binding = ItemHomeMyproileBinding.inflate(
+                val binding = ItemVpHomeMyprofileBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false,
@@ -30,7 +30,7 @@ class HomeAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
             }
 
             FRIEND_PROFILE_TYPE -> {
-                val binding = ItemHomeFriendProfileBinding.inflate(
+                val binding = ItemVpHomeFriendProfileBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false,
@@ -38,7 +38,7 @@ class HomeAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
                 FriendProfileViewHolder(binding)
             }
 
-            else -> throw IllegalArgumentException("Unknown viewType: $viewType")
+            else -> throw IllegalArgumentException(UNKNOWN_TYPE)
         }
     }
 
@@ -57,29 +57,29 @@ class HomeAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
         }
     }
 
-    inner class MyProfileViewHolder(private val binding: ItemHomeMyproileBinding) :
+    inner class MyProfileViewHolder(private val binding: ItemVpHomeMyprofileBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(myProile: Profile.MyProfile) {
-            binding.ivHomeMyprofile.load(myProile.profileImage)
-            binding.tvHomeMyname.text = myProile.name
+            binding.ivVpHomeMyprofile.load(myProile.profileImage)
+            binding.tvVpHomeMyName.text = myProile.name
         }
     }
 
-    inner class FriendProfileViewHolder(private val binding: ItemHomeFriendProfileBinding) :
+    inner class FriendProfileViewHolder(private val binding: ItemVpHomeFriendProfileBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(friendProfile: Profile.FriendProfile) {
-            binding.ivHomeFriendProfile.load(friendProfile.profileImage)
-            binding.tvHomeFriendName.text = friendProfile.name
+            binding.ivVpHomeFriendProfile.load(friendProfile.profileImage)
+            binding.tvVpHomeFriendName.text = friendProfile.name
 
             if (friendProfile.isTodayBirthday) {
-                binding.ivHomeFriendBirthdayCake.visibility = View.VISIBLE
-                binding.tvHomeFriendGift.visibility = View.VISIBLE
-                binding.tvHomeFriendGift.text = binding.root.context.getString(R.string.home_gift)
+                binding.ivVpHomeFriendBirthdayCake.visibility = View.VISIBLE
+                binding.tvVpHomeFriendGift.visibility = View.VISIBLE
+                binding.tvVpHomeFriendGift.text = binding.root.context.getString(R.string.home_gift)
             }
 
             if (friendProfile.isMusicRegist) {
-                binding.clHomeFriendMusic.visibility = View.VISIBLE
-                binding.tvHomeFriendMusicName.text = friendProfile.music
+                binding.clVpHomeFriendMusic.visibility = View.VISIBLE
+                binding.tvVpHomeFriendMusicName.text = friendProfile.music
             }
         }
     }
@@ -87,5 +87,6 @@ class HomeAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
     companion object {
         private const val MY_PROFILE_TYPE = 0
         private const val FRIEND_PROFILE_TYPE = 1
+        private const val UNKNOWN_TYPE = "Unknown viewType"
     }
 }
