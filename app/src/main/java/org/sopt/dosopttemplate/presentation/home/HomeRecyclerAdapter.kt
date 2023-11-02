@@ -11,8 +11,11 @@ import org.sopt.dosopttemplate.data.entity.home.Profile
 import org.sopt.dosopttemplate.databinding.ItemHomeFriendProfileBinding
 import org.sopt.dosopttemplate.databinding.ItemHomeMyproileBinding
 import sopt.uni.util.extension.ItemDiffCallback
+import sopt.uni.util.extension.setOnSingleClickListener
 
-class HomeRecyclerAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
+class HomeRecyclerAdapter(
+    private val onClick: (Int) -> Unit,
+) : ListAdapter<Profile, RecyclerView.ViewHolder>(
     ItemDiffCallback<Profile>(
         onItemsTheSame = { old, new -> old.name == new.name },
         onContentsTheSame = { old, new -> old == new },
@@ -35,6 +38,7 @@ class HomeRecyclerAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
                     parent,
                     false,
                 )
+                onClick
                 FriendProfileViewHolder(binding)
             }
 
@@ -70,6 +74,10 @@ class HomeRecyclerAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
         fun onBind(friendProfile: Profile.FriendProfile) {
             binding.ivHomeFriendProfile.load(friendProfile.profileImage)
             binding.tvHomeFriendName.text = friendProfile.name
+
+            binding.clHomeFriend.setOnSingleClickListener {
+                onClick(absoluteAdapterPosition)
+            }
 
             if (friendProfile.isTodayBirthday) {
                 binding.ivHomeFriendBirthdayCake.visibility = View.VISIBLE

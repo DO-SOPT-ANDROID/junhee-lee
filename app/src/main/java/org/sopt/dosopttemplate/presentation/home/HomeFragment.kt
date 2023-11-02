@@ -1,7 +1,9 @@
 package org.sopt.dosopttemplate.presentation.home
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -11,7 +13,16 @@ import org.sopt.dosopttemplate.util.binding.BindingFragment
 
 @AndroidEntryPoint
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private val homeRvAdapter by lazy { HomeRecyclerAdapter() }
+    private val homeRvAdapter by lazy {
+        HomeRecyclerAdapter(
+            onClick = { position ->
+                val intent = Intent(requireContext(), HomeProfileDetailActivity::class.java)
+                val profileList = homeViewModel.profileData.value
+                intent.putExtra(PROFILE_LIST, profileList?.get(position) as Parcelable)
+                startActivity(intent)
+            },
+        )
+    }
     private val homeVpAdapter by lazy { HomeVpAdapter() }
     private val isLandscape by lazy { resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE }
     private val homeViewModel by activityViewModels<HomeViewModel>()
@@ -52,7 +63,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     fun goToTop() {
         binding.rvHome.smoothScrollToPosition(TOP_POSITION)
     }
+
     companion object {
+        const val PROFILE_LIST = "profile"
         private const val TOP_POSITION = 0
     }
 }
