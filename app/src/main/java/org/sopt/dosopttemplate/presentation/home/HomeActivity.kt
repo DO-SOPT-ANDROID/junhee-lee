@@ -3,10 +3,14 @@ package org.sopt.dosopttemplate.presentation.home
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.ActivityHomeBinding
 import org.sopt.dosopttemplate.presentation.android.DoAndroidFragment
+import org.sopt.dosopttemplate.presentation.auth.LoginActivity.Companion.TWO_SECONDS
+import org.sopt.dosopttemplate.presentation.auth.LoginActivity.Companion.ZERO
 import org.sopt.dosopttemplate.presentation.mypage.MyPageFragment
 import sopt.uni.util.binding.BindingActivity
 import sopt.uni.util.extension.showToast
@@ -14,11 +18,11 @@ import sopt.uni.util.extension.showToast
 @AndroidEntryPoint
 class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
-    private var backPressedTime = 0L
+    private var backPressedTime = ZERO
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            if (System.currentTimeMillis() - backPressedTime <= 2000) {
+            if (System.currentTimeMillis() - backPressedTime <= TWO_SECONDS) {
                 finish()
             } else {
                 backPressedTime = System.currentTimeMillis()
@@ -46,30 +50,13 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
     private fun clickBottomNavigation() {
         binding.bnvHome.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_home -> {
-                    replaceFragment(HomeFragment())
-                    true
-                }
-
-                R.id.menu_do_android -> {
-                    replaceFragment(DoAndroidFragment())
-                    true
-                }
-
-                R.id.menu_mypage -> {
-                    replaceFragment(MyPageFragment())
-                    true
-                }
-
+                R.id.menu_home -> navigateTo<HomeFragment>()
+                R.id.menu_do_android -> navigateTo<DoAndroidFragment>()
+                R.id.menu_mypage -> navigateTo<MyPageFragment>()
                 else -> false
             }
+            true
         }
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fcv_home, fragment)
-            .commit()
     }
 
     private fun finishApplication() {
@@ -78,5 +65,11 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
 
     private fun initBottomNavi() {
         binding.bnvHome.selectedItemId = R.id.menu_home
+    }
+
+    private inline fun <reified T : Fragment> navigateTo() {
+        supportFragmentManager.commit {
+            replace<T>(R.id.fcv_home, T::class.java.canonicalName)
+        }
     }
 }

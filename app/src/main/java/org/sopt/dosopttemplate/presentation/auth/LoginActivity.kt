@@ -26,11 +26,11 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private lateinit var signData: SignInfo
-    private var backPressedTime = 0L
+    private var backPressedTime = ZERO
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            if (System.currentTimeMillis() - backPressedTime <= 2000) {
+            if (System.currentTimeMillis() - backPressedTime <= TWO_SECONDS) {
                 finish()
             } else {
                 backPressedTime = System.currentTimeMillis()
@@ -68,7 +68,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                 savedName.toString(),
                 savedMbti.toString(),
             )
-            moveToMainPage(signInfo)
+            moveToHome(signInfo)
         }
     }
 
@@ -92,7 +92,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     private fun clickLoginButton() {
         binding.btnLogin.setOnSingleClickListener {
             if (checkLoginValid()) {
-                moveToMainPage(signData)
+                moveToHome(signData)
             }
         }
     }
@@ -113,11 +113,12 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         }
     }
 
-    private fun moveToMainPage(userData: SignInfo) {
-        val intent = Intent(this, HomeActivity::class.java)
+    private fun moveToHome(userData: SignInfo) {
+        val intent = Intent(this, HomeActivity::class.java).apply {
+            putExtra(SIGN_INFO, userData)
+            addFlags(FLAG_ACTIVITY_CLEAR_TASK or FLAG_ACTIVITY_NEW_TASK)
+        }
         showToast(getString(R.string.login_success))
-        intent.putExtra(SIGN_INFO, userData)
-        intent.addFlags(FLAG_ACTIVITY_CLEAR_TASK or FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 
@@ -130,5 +131,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
     companion object {
         const val SIGN_INFO = "sign_info"
+        const val ZERO = 0L
+        const val TWO_SECONDS = 2000
     }
 }
