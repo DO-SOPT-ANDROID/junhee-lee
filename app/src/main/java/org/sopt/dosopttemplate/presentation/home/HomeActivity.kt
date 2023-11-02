@@ -35,10 +35,24 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        finishApplication()
+        initFragment()
         initBottomNavi()
         clickBottomNavigation()
+        finishApplication()
+        doubleClickBottomNavigation()
+    }
 
+    private fun doubleClickBottomNavigation() {
+        binding.bnvHome.setOnItemReselectedListener {
+            supportFragmentManager.findFragmentById(R.id.fcv_home)?.let { currentFragment ->
+                if (currentFragment is HomeFragment) {
+                    currentFragment.goToTop()
+                }
+            }
+        }
+    }
+
+    private fun initFragment() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fcv_home)
         if (currentFragment == null) {
             supportFragmentManager.beginTransaction()
