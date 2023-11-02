@@ -23,11 +23,76 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="40dp"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/iv_home_friend_profile"
         app:layout_constraintStart_toEndOf="@id/iv_home_friend_profile"
         app:layout_constraintTop_toTopOf="@id/iv_home_friend_profile"
         tools:text="이준희" />
+
+    <ImageView
+        android:id="@+id/iv_home_friend_birthday_cake"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_cake_red_24"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tv_home_friend_name"
+        app:layout_constraintStart_toEndOf="@id/tv_home_friend_name"
+        app:layout_constraintTop_toTopOf="@id/tv_home_friend_name" />
+
+    <TextView
+        android:id="@+id/tv_home_friend_gift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_red_line"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="3dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/iv_home_friend_birthday_cake"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_home_friend_birthday_cake"
+        tools:text="@string/home_gift" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_home_friend_music"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_green_line"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/iv_home_friend_birthday_cake"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_home_friend_birthday_cake">
+
+        <TextView
+            android:id="@+id/tv_home_friend_music_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingVertical="3dp"
+            android:paddingStart="15dp"
+            app:layout_constraintEnd_toStartOf="@+id/iv_home_friend_music"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="아무 노래 - 지코" />
+
+        <ImageView
+            android:id="@+id/iv_home_friend_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:paddingEnd="5dp"
+            android:src="@drawable/ic_play_arrow_green_24"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_home_friend_music_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_home_friend_music_name" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

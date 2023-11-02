@@ -31,4 +31,17 @@
         app:layout_constraintTop_toTopOf="@id/iv_home_myprofile"
         tools:text="이준희" />
 
+    <TextView
+        android:id="@+id/tv_home_state_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_grey_line"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="3dp"
+        android:text="@string/home_add_state_message"
+        app:layout_constraintBottom_toBottomOf="@id/tv_home_myname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_home_myname" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
