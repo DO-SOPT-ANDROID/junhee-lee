@@ -1,5 +1,6 @@
 package org.sopt.dosopttemplate.presentation.home
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -13,6 +14,9 @@ import org.sopt.dosopttemplate.util.binding.BindingFragment
 
 @AndroidEntryPoint
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+    private var isFabOpen = false
+    private val isLandscape by lazy { resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE }
+    private val homeViewModel by activityViewModels<HomeViewModel>()
     private val homeRvAdapter by lazy {
         HomeRecyclerAdapter(
             onClick = { position ->
@@ -24,13 +28,12 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         )
     }
     private val homeVpAdapter by lazy { HomeVpAdapter() }
-    private val isLandscape by lazy { resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE }
-    private val homeViewModel by activityViewModels<HomeViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setAdapter()
         getProfileList()
+        setFABClickEvent()
     }
 
     private fun setAdapter() {
@@ -62,6 +65,31 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     fun goToTop() {
         binding.rvHome.smoothScrollToPosition(TOP_POSITION)
+    }
+
+    private fun setFABClickEvent() {
+        with(binding) {
+            fabMain.setOnClickListener {
+                toggleFab()
+            }
+
+            fabAddPerson.setOnClickListener {
+
+            }
+        }
+    }
+
+    private fun toggleFab() {
+        with(binding) {
+            if (isFabOpen) {
+                ObjectAnimator.ofFloat(fabAddPerson, "translationY", 0f).apply { start() }
+                ObjectAnimator.ofFloat(fabMain, View.ROTATION, 45f, 0f).apply { start() }
+            } else {
+                ObjectAnimator.ofFloat(fabAddPerson, "translationY", -200f).apply { start() }
+                ObjectAnimator.ofFloat(fabMain, View.ROTATION, 0f, 45f).apply { start() }
+            }
+        }
+        isFabOpen = !isFabOpen
     }
 
     companion object {
