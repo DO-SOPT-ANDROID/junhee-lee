@@ -72,22 +72,25 @@ class HomeRecyclerAdapter(
     inner class FriendProfileViewHolder(private val binding: ItemHomeFriendProfileBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(friendProfile: Profile.FriendProfile) {
-            binding.ivHomeFriendProfile.load(friendProfile.profileImage)
-            binding.tvHomeFriendName.text = friendProfile.name
+            with(binding) {
+                ivHomeFriendProfile.load(friendProfile.profileImage)
+                tvHomeFriendName.text = friendProfile.name
 
-            binding.clHomeFriend.setOnSingleClickListener {
-                onClick(absoluteAdapterPosition)
-            }
+                clHomeFriend.setOnSingleClickListener {
+                    onClick(absoluteAdapterPosition)
+                }
 
-            if (friendProfile.isTodayBirthday) {
-                binding.ivHomeFriendBirthdayCake.visibility = View.VISIBLE
-                binding.tvHomeFriendGift.visibility = View.VISIBLE
-                binding.tvHomeFriendGift.text = binding.root.context.getString(R.string.home_gift)
-            }
+                if (friendProfile.isTodayBirthday) {
+                    ivHomeFriendBirthdayCake.visibility = View.VISIBLE
+                    tvHomeFriendGift.visibility = View.VISIBLE
+                    tvHomeFriendGift.text =
+                        binding.root.context.getString(R.string.home_gift)
+                }
 
-            if (friendProfile.isMusicRegist) {
-                binding.clHomeFriendMusic.visibility = View.VISIBLE
-                binding.tvHomeFriendMusicName.text = friendProfile.music
+                if (friendProfile.isMusicRegist) {
+                    clHomeFriendMusic.visibility = View.VISIBLE
+                    tvHomeFriendMusicName.text = friendProfile.music
+                }
             }
         }
     }
