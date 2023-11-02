@@ -19,15 +19,14 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private val homeViewModel by activityViewModels<HomeViewModel>()
     private val homeRvAdapter by lazy {
         HomeRecyclerAdapter(
-            onClick = { position ->
-                val intent = Intent(requireContext(), HomeProfileDetailActivity::class.java)
-                val profileList = homeViewModel.profileData.value
-                intent.putExtra(PROFILE_LIST, profileList?.get(position) as Parcelable)
-                startActivity(intent)
-            },
+            onClick = moveToProfileDetail()
         )
     }
-    private val homeVpAdapter by lazy { HomeVpAdapter() }
+    private val homeVpAdapter by lazy {
+        HomeVpAdapter(
+            onClick = moveToProfileDetail()
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,15 +37,19 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     private fun setAdapter() {
         if (isLandscape) {
-            binding.vpHome.adapter = homeVpAdapter
-            binding.vpHome.visibility = View.VISIBLE
-            binding.rvHome.visibility = View.GONE
-            binding.springDotsIndicator.attachTo(binding.vpHome)
+            with(binding) {
+                vpHome.adapter = homeVpAdapter
+                vpHome.visibility = View.VISIBLE
+                rvHome.visibility = View.GONE
+                springDotsIndicator.attachTo(vpHome)
+            }
         } else {
-            binding.rvHome.adapter = homeRvAdapter
-            binding.rvHome.visibility = View.VISIBLE
-            binding.vpHome.visibility = View.GONE
-            binding.springDotsIndicator.visibility = View.GONE
+            with(binding) {
+                rvHome.adapter = homeRvAdapter
+                rvHome.visibility = View.VISIBLE
+                vpHome.visibility = View.GONE
+                springDotsIndicator.visibility = View.GONE
+            }
         }
 
         homeViewModel.profileData.observe(viewLifecycleOwner) { profileList ->
@@ -55,6 +58,15 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             } else {
                 homeRvAdapter.submitList(profileList)
             }
+        }
+    }
+
+    private fun moveToProfileDetail(): (Int) -> Unit {
+        return { position ->
+            val intent = Intent(requireContext(), HomeProfileDetailActivity::class.java)
+            val profileList = homeViewModel.profileData.value
+            intent.putExtra(PROFILE_LIST, profileList?.get(position) as Parcelable)
+            startActivity(intent)
         }
     }
 

@@ -11,8 +11,11 @@ import org.sopt.dosopttemplate.data.entity.home.Profile
 import org.sopt.dosopttemplate.databinding.ItemVpHomeFriendProfileBinding
 import org.sopt.dosopttemplate.databinding.ItemVpHomeMyprofileBinding
 import sopt.uni.util.extension.ItemDiffCallback
+import sopt.uni.util.extension.setOnSingleClickListener
 
-class HomeVpAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
+class HomeVpAdapter(
+    private val onClick: (Int) -> Unit,
+) : ListAdapter<Profile, RecyclerView.ViewHolder>(
     ItemDiffCallback<Profile>(
         onItemsTheSame = { old, new -> old.name == new.name },
         onContentsTheSame = { old, new -> old == new },
@@ -35,6 +38,7 @@ class HomeVpAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
                     parent,
                     false,
                 )
+                onClick
                 FriendProfileViewHolder(binding)
             }
 
@@ -68,18 +72,24 @@ class HomeVpAdapter : ListAdapter<Profile, RecyclerView.ViewHolder>(
     inner class FriendProfileViewHolder(private val binding: ItemVpHomeFriendProfileBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(friendProfile: Profile.FriendProfile) {
-            binding.ivVpHomeFriendProfile.load(friendProfile.profileImage)
-            binding.tvVpHomeFriendName.text = friendProfile.name
+            with(binding) {
+                ivVpHomeFriendProfile.load(friendProfile.profileImage)
+                tvVpHomeFriendName.text = friendProfile.name
 
-            if (friendProfile.isTodayBirthday) {
-                binding.ivVpHomeFriendBirthdayCake.visibility = View.VISIBLE
-                binding.tvVpHomeFriendGift.visibility = View.VISIBLE
-                binding.tvVpHomeFriendGift.text = binding.root.context.getString(R.string.home_gift)
-            }
+                clVpHomeFriend.setOnSingleClickListener {
+                    onClick(absoluteAdapterPosition)
+                }
 
-            if (friendProfile.isMusicRegist) {
-                binding.clVpHomeFriendMusic.visibility = View.VISIBLE
-                binding.tvVpHomeFriendMusicName.text = friendProfile.music
+                if (friendProfile.isTodayBirthday) {
+                    ivVpHomeFriendBirthdayCake.visibility = View.VISIBLE
+                    tvVpHomeFriendGift.visibility = View.VISIBLE
+                    tvVpHomeFriendGift.text = binding.root.context.getString(R.string.home_gift)
+                }
+
+                if (friendProfile.isMusicRegist) {
+                    clVpHomeFriendMusic.visibility = View.VISIBLE
+                    tvVpHomeFriendMusicName.text = friendProfile.music
+                }
             }
         }
     }
