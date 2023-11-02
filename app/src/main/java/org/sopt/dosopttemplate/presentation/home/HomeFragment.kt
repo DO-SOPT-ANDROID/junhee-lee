@@ -29,4 +29,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun getProfileList() {
         homeViewModel.getProfileList()
     }
+
+    fun goToTop() {
+        binding.rvHome.smoothScrollToPosition(0)
+    }
 }
