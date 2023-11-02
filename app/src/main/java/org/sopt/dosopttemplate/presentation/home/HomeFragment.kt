@@ -50,7 +50,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     fun goToTop() {
-        binding.rvHome.smoothScrollToPosition(0)
+        binding.rvHome.smoothScrollToPosition(TOP_POSITION)
     }
-
+    companion object {
+        private const val TOP_POSITION = 0
+    }
 }
