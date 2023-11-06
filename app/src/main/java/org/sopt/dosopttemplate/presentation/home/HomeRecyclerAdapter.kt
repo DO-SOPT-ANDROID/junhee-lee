@@ -15,6 +15,7 @@ import sopt.uni.util.extension.setOnSingleClickListener
 
 class HomeRecyclerAdapter(
     private val onClick: (Int) -> Unit,
+    private val deleteUser: (String) -> Unit,
 ) : ListAdapter<Profile, RecyclerView.ViewHolder>(
     ItemDiffCallback<Profile>(
         onItemsTheSame = { old, new -> old.name == new.name },
@@ -38,6 +39,7 @@ class HomeRecyclerAdapter(
                     parent,
                     false,
                 )
+                deleteUser
                 onClick
                 FriendProfileViewHolder(binding)
             }
@@ -78,6 +80,11 @@ class HomeRecyclerAdapter(
 
                 clHomeFriend.setOnSingleClickListener {
                     onClick(absoluteAdapterPosition)
+                }
+
+                clHomeFriend.setOnLongClickListener {
+                    deleteUser(friendProfile.name)
+                    true
                 }
 
                 if (friendProfile.isTodayBirthday) {
