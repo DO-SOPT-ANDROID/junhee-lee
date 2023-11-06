@@ -57,28 +57,29 @@
         app:layout_constraintTop_toTopOf="@id/iv_home_friend_birthday_cake"
         tools:text="@string/home_gift" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/cl_home_friend_music"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/bg_green_line"
+        android:orientation="horizontal"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/iv_home_friend_birthday_cake"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/iv_home_friend_birthday_cake">
+        app:layout_constraintTop_toTopOf="@id/iv_home_friend_birthday_cake"
+        app:layout_constraintWidth_max="200dp">
 
         <TextView
             android:id="@+id/tv_home_friend_music_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingVertical="3dp"
             android:paddingStart="15dp"
-            app:layout_constraintEnd_toStartOf="@id/iv_home_friend_music"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             tools:text="아무 노래 - 지코" />
 
         <ImageView
@@ -87,13 +88,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
             android:paddingEnd="5dp"
-            android:src="@drawable/ic_play_arrow_green_24"
-            app:layout_constraintBottom_toBottomOf="@id/tv_home_friend_music_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_home_friend_music_name" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:src="@drawable/ic_play_arrow_green_24" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,6 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun providesDummyRepository(profileDataSource: DummyProfile): ProfileDataSource =
+    fun providesProfileDataSource(profileDataSource: DummyProfile): ProfileDataSource =
         profileDataSource
 }

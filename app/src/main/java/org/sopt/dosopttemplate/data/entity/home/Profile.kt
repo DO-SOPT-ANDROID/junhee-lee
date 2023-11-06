@@ -24,5 +24,19 @@ sealed class Profile {
         val music: String?,
         val isTodayBirthday: Boolean,
         val isMusicRegist: Boolean,
-    ) : Parcelable, Profile()
+    ) : Parcelable, Profile() {
+        companion object {
+            fun toFriendProfile(friendInfoList: List<FriendProfileEntity>) =
+                friendInfoList.map { data ->
+                    FriendProfile(
+                        name = data.name,
+                        birthday = data.birthday,
+                        music = data.music,
+                        profileImage = data.imageUri,
+                        isMusicRegist = data.isMusicRegist,
+                        isTodayBirthday = data.isTodayBirthday
+                    )
+                }
+        }
+    }
 }
