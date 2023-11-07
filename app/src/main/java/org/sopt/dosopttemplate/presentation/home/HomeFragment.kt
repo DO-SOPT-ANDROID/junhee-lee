@@ -19,8 +19,6 @@ import org.sopt.dosopttemplate.util.binding.BindingFragment
 @AndroidEntryPoint
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-
-    //private lateinit var friendProfile: FriendProfileEntity
     private var isFabOpen = false
     private val isLandscape by lazy { resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE }
     private val homeViewModel by activityViewModels<HomeViewModel>()
@@ -63,7 +61,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         }
 
         homeViewModel.profileData.observe(viewLifecycleOwner) { profileList ->
-            Log.d("aaa", "Received profile data: $profileList")
             if (isLandscape) {
                 homeVpAdapter.submitList(profileList)
             } else {

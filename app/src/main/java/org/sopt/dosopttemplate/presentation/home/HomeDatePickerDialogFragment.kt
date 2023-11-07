@@ -31,7 +31,7 @@ class HomeDatePickerDialogFragment :
             val year = binding.datePicker.year
             val month = binding.datePicker.month + 1
             val day = binding.datePicker.dayOfMonth
-            val selectedDate = String.format("%04d%02d%02d", year, month, day)
+            val selectedDate = String.format(getString(R.string.dialog_date_format), year, month, day)
             listener?.onDateSelected(selectedDate)
             dismiss()
         }
