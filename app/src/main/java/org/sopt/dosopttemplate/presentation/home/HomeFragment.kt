@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Parcelable
-import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -79,9 +78,19 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun deleteUserDialog(userName: String) {
-        HomeDialogFragment(userName).show(childFragmentManager, "delete_dialog")
+        HomeDialogFragment().apply {
+            titleText = this@HomeFragment.getString(R.string.dialog_home_user_delete_title)
+            confirmButtonText = this@HomeFragment.getString(R.string.dialog_apply_text)
+            dismissButtonText = this@HomeFragment.getString(R.string.dialog_cancel_text)
+            confirmClickListener = {
+                homeViewModel.deleteProfile(userName)
+                dismiss()
+            }
+            dismissClickListener = {
+                dismiss()
+            }
+        }.show(childFragmentManager, "")
     }
-
 
     private fun getProfileList() {
         homeViewModel.initProfileList()
