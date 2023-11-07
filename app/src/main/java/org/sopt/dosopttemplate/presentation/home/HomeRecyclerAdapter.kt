@@ -75,6 +75,10 @@ class HomeRecyclerAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(friendProfile: Profile.FriendProfile) {
             with(binding) {
+                clHomeFriendMusic.visibility = View.GONE
+                tvHomeFriendGift.visibility = View.GONE
+                ivHomeFriendBirthdayCake.visibility = View.GONE
+
                 ivHomeFriendProfile.load(friendProfile.profileImage)
                 tvHomeFriendName.text = friendProfile.name
 
