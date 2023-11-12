@@ -1,4 +1,4 @@
-package sopt.uni.util.extension
+package org.sopt.dosopttemplate.util.extension
 
 import android.app.Activity
 import android.content.Context

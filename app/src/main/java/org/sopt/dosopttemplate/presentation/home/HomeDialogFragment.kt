@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.NoBodyAction2DialogBinding
-import sopt.uni.presentation.BindingDialogFragment
+import org.sopt.dosopttemplate.util.binding.BindingDialogFragment
 
 class HomeDialogFragment :
     BindingDialogFragment<NoBodyAction2DialogBinding>(R.layout.no_body_action2_dialog) {

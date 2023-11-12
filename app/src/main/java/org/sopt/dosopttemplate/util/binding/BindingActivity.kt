@@ -1,4 +1,4 @@
-package sopt.uni.util.binding
+package org.sopt.dosopttemplate.util.binding
 
 import android.os.Bundle
 import android.view.MotionEvent
@@ -7,7 +7,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import sopt.uni.util.extension.hideKeyboard
+import org.sopt.dosopttemplate.util.extension.hideKeyboard
 abstract class BindingActivity<T : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int,
 ) : AppCompatActivity() {

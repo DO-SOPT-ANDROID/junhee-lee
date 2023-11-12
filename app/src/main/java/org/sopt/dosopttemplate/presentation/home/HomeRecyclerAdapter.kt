@@ -1,28 +1,23 @@
 package org.sopt.dosopttemplate.presentation.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.entity.home.Profile
 import org.sopt.dosopttemplate.databinding.ItemHomeFriendProfileBinding
 import org.sopt.dosopttemplate.databinding.ItemHomeMyproileBinding
-import sopt.uni.util.extension.ItemDiffCallback
-import sopt.uni.util.extension.setOnSingleClickListener
+import org.sopt.dosopttemplate.util.extension.ItemDiffCallback
 
 class HomeRecyclerAdapter(
     private val onClick: (Int) -> Unit,
     private val deleteUser: (String) -> Unit,
-) : ListAdapter<Profile, RecyclerView.ViewHolder>(
+) : ListAdapter<Profile, HomeRecyclerViewHolder>(
     ItemDiffCallback<Profile>(
         onItemsTheSame = { old, new -> old.name == new.name },
         onContentsTheSame = { old, new -> old == new },
     ),
 ) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeRecyclerViewHolder {
         return when (viewType) {
             MY_PROFILE_TYPE -> {
                 val binding = ItemHomeMyproileBinding.inflate(
@@ -30,7 +25,7 @@ class HomeRecyclerAdapter(
                     parent,
                     false,
                 )
-                MyProfileViewHolder(binding)
+                HomeRecyclerViewHolder.MyProfileViewHolder(binding)
             }
 
             FRIEND_PROFILE_TYPE -> {
@@ -41,17 +36,17 @@ class HomeRecyclerAdapter(
                 )
                 deleteUser
                 onClick
-                FriendProfileViewHolder(binding)
+                HomeRecyclerViewHolder.FriendProfileViewHolder(binding, onClick, deleteUser)
             }
 
             else -> throw IllegalArgumentException(UNKNOWN_TYPE)
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HomeRecyclerViewHolder, position: Int) {
         when (holder) {
-            is MyProfileViewHolder -> holder.onBind(getItem(position) as Profile.MyProfile)
-            is FriendProfileViewHolder -> holder.onBind(getItem(position) as Profile.FriendProfile)
+            is HomeRecyclerViewHolder.MyProfileViewHolder -> holder.onBind(getItem(position) as Profile.MyProfile)
+            is HomeRecyclerViewHolder.FriendProfileViewHolder -> holder.onBind(getItem(position) as Profile.FriendProfile)
         }
     }
 
@@ -60,49 +55,6 @@ class HomeRecyclerAdapter(
             is Profile.MyProfile -> MY_PROFILE_TYPE
             is Profile.FriendProfile -> FRIEND_PROFILE_TYPE
             else -> MY_PROFILE_TYPE
-        }
-    }
-
-    inner class MyProfileViewHolder(private val binding: ItemHomeMyproileBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun onBind(myProile: Profile.MyProfile) {
-            binding.ivHomeMyprofile.load(myProile.profileImage)
-            binding.tvHomeMyname.text = myProile.name
-        }
-    }
-
-    inner class FriendProfileViewHolder(private val binding: ItemHomeFriendProfileBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun onBind(friendProfile: Profile.FriendProfile) {
-            with(binding) {
-                clHomeFriendMusic.visibility = View.GONE
-                tvHomeFriendGift.visibility = View.GONE
-                ivHomeFriendBirthdayCake.visibility = View.GONE
-
-                ivHomeFriendProfile.load(friendProfile.profileImage)
-                tvHomeFriendName.text = friendProfile.name
-
-                clHomeFriend.setOnSingleClickListener {
-                    onClick(absoluteAdapterPosition)
-                }
-
-                clHomeFriend.setOnLongClickListener {
-                    deleteUser(friendProfile.name)
-                    true
-                }
-
-                if (friendProfile.isTodayBirthday) {
-                    ivHomeFriendBirthdayCake.visibility = View.VISIBLE
-                    tvHomeFriendGift.visibility = View.VISIBLE
-                    tvHomeFriendGift.text =
-                        binding.root.context.getString(R.string.home_gift)
-                }
-
-                if (friendProfile.isMusicRegist) {
-                    clHomeFriendMusic.visibility = View.VISIBLE
-                    tvHomeFriendMusicName.text = friendProfile.music
-                }
-            }
         }
     }
 

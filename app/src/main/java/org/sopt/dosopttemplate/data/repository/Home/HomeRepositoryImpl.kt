@@ -14,7 +14,7 @@ class HomeRepositoryImpl @Inject constructor(
     HomeRepository {
 
     override suspend fun getDefaultProfile(): Result<List<Profile>> {
-        return kotlin.runCatching {
+        return runCatching {
             val profileList = dataSource.getProfileList()
             profileList
         }.fold(
@@ -28,17 +28,14 @@ class HomeRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getProfileList(): Result<List<FriendProfileEntity>> {
-        return kotlin.runCatching {
+        return runCatching {
             val profileList = friendDataBase.dao().getAll()
             profileList
         }.fold(
             onSuccess = {
-                Log.d("aaa", "getlistIMP")
-                Log.d("aaa", "Received profile dataIMP: $it")
                 Result.success(it)
             },
             onFailure = { exception ->
-                Log.e("aaa", "Error: $exception")
                 Result.failure(exception)
             },
         )

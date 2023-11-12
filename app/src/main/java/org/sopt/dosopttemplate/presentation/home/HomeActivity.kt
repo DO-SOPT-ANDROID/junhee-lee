@@ -12,8 +12,8 @@ import org.sopt.dosopttemplate.presentation.android.DoAndroidFragment
 import org.sopt.dosopttemplate.presentation.auth.LoginActivity.Companion.TWO_SECONDS
 import org.sopt.dosopttemplate.presentation.auth.LoginActivity.Companion.ZERO
 import org.sopt.dosopttemplate.presentation.mypage.MyPageFragment
-import sopt.uni.util.binding.BindingActivity
-import sopt.uni.util.extension.showToast
+import org.sopt.dosopttemplate.util.binding.BindingActivity
+import org.sopt.dosopttemplate.util.extension.showToast
 
 @AndroidEntryPoint
 class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {

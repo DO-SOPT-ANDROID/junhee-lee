@@ -1,4 +1,4 @@
-package sopt.uni.util.binding
+package org.sopt.dosopttemplate.util.binding
 
 object BindingAdapter {
 

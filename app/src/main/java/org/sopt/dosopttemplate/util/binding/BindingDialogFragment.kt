@@ -1,4 +1,4 @@
-package sopt.uni.presentation
+package org.sopt.dosopttemplate.util.binding
 
 import android.os.Bundle
 import android.view.LayoutInflater
