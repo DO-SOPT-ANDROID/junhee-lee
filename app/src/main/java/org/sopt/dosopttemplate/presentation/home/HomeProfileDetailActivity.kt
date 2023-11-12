@@ -8,9 +8,9 @@ import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.entity.home.Profile
 import org.sopt.dosopttemplate.databinding.ActivityFriendProfileDetailBinding
 import org.sopt.dosopttemplate.presentation.home.HomeFragment.Companion.PROFILE_LIST
-import sopt.uni.util.binding.BindingActivity
-import sopt.uni.util.extension.parcelable
-import sopt.uni.util.extension.setOnSingleClickListener
+import org.sopt.dosopttemplate.util.binding.BindingActivity
+import org.sopt.dosopttemplate.util.extension.parcelable
+import org.sopt.dosopttemplate.util.extension.setOnSingleClickListener
 
 @AndroidEntryPoint
 class HomeProfileDetailActivity :

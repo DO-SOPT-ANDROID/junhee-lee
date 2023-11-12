@@ -1,4 +1,4 @@
-package sopt.uni.util.extension
+package org.sopt.dosopttemplate.util.extension
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar

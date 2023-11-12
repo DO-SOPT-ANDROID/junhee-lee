@@ -10,8 +10,8 @@ import org.sopt.dosopttemplate.databinding.FragmentMypageBinding
 import org.sopt.dosopttemplate.presentation.auth.LoginActivity
 import org.sopt.dosopttemplate.presentation.auth.LoginActivity.Companion.SIGN_INFO
 import org.sopt.dosopttemplate.util.binding.BindingFragment
-import sopt.uni.util.extension.parcelable
-import sopt.uni.util.extension.setOnSingleClickListener
+import org.sopt.dosopttemplate.util.extension.parcelable
+import org.sopt.dosopttemplate.util.extension.setOnSingleClickListener
 
 class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
 

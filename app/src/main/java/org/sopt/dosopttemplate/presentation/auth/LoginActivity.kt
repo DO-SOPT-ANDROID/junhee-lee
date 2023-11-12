@@ -14,12 +14,12 @@ import org.sopt.dosopttemplate.data.datasource.local.DoSoptStorage
 import org.sopt.dosopttemplate.data.entity.sign.SignInfo
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
 import org.sopt.dosopttemplate.presentation.home.HomeActivity
-import sopt.uni.util.binding.BindingActivity
-import sopt.uni.util.extension.hideKeyboard
-import sopt.uni.util.extension.parcelable
-import sopt.uni.util.extension.setOnSingleClickListener
-import sopt.uni.util.extension.showSnackbar
-import sopt.uni.util.extension.showToast
+import org.sopt.dosopttemplate.util.binding.BindingActivity
+import org.sopt.dosopttemplate.util.extension.hideKeyboard
+import org.sopt.dosopttemplate.util.extension.parcelable
+import org.sopt.dosopttemplate.util.extension.setOnSingleClickListener
+import org.sopt.dosopttemplate.util.extension.showSnackbar
+import org.sopt.dosopttemplate.util.extension.showToast
 
 @AndroidEntryPoint
 class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {

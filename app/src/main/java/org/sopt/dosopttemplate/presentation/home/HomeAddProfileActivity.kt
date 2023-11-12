@@ -8,9 +8,9 @@ import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.entity.home.FriendProfileEntity
 import org.sopt.dosopttemplate.databinding.ActivityHomeAddProfileBinding
 import org.sopt.dosopttemplate.presentation.home.HomeFragment.Companion.PROFILE_LIST
-import sopt.uni.util.binding.BindingActivity
-import sopt.uni.util.extension.setOnSingleClickListener
-import sopt.uni.util.extension.showSnackbar
+import org.sopt.dosopttemplate.util.binding.BindingActivity
+import org.sopt.dosopttemplate.util.extension.setOnSingleClickListener
+import org.sopt.dosopttemplate.util.extension.showSnackbar
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -18,12 +18,12 @@ import java.time.format.DateTimeFormatter
 class HomeAddProfileActivity :
     BindingActivity<ActivityHomeAddProfileBinding>(R.layout.activity_home_add_profile) {
 
-    private val datePickerDialogFragment = HomeDatePickerDialogFragment()
     private val homeViewModel by viewModels<HomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        val datePickerDialogFragment = HomeDatePickerDialogFragment()
 
         setupDatePicker(datePickerDialogFragment)
         clickAddProfileEnd()

@@ -14,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
 import org.sopt.dosopttemplate.util.binding.BindingFragment
+import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -43,15 +44,13 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun setAdapter() {
-        if (isLandscape) {
-            with(binding) {
+        with(binding) {
+            if (isLandscape) {
                 vpHome.adapter = homeVpAdapter
                 vpHome.visibility = View.VISIBLE
                 rvHome.visibility = View.GONE
                 springDotsIndicator.attachTo(vpHome)
-            }
-        } else {
-            with(binding) {
+            } else {
                 rvHome.adapter = homeRvAdapter
                 rvHome.visibility = View.VISIBLE
                 vpHome.visibility = View.GONE
