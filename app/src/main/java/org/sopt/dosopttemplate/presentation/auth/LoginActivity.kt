@@ -47,7 +47,6 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         setResultSignUp()
         moveToSignUp()
         clickLoginButton()
-        clickLayout()
         finishApplication()
     }
 
@@ -69,12 +68,6 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                 savedMbti.toString(),
             )
             moveToHome(signInfo)
-        }
-    }
-
-    private fun clickLayout() {
-        binding.layoutLogin.setOnSingleClickListener {
-            hideKeyboard(currentFocus ?: View(this))
         }
     }
 
