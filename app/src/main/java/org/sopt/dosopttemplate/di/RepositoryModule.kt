@@ -6,8 +6,10 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.sopt.dosopttemplate.data.datasource.local.DummyProfile
 import org.sopt.dosopttemplate.data.datasource.local.ProfileDataSource
-import org.sopt.dosopttemplate.data.repository.Home.HomeRepository
-import org.sopt.dosopttemplate.data.repository.Home.HomeRepositoryImpl
+import org.sopt.dosopttemplate.data.repository.auth.AuthRepository
+import org.sopt.dosopttemplate.data.repository.auth.AuthRepositoryImpl
+import org.sopt.dosopttemplate.data.repository.home.HomeRepository
+import org.sopt.dosopttemplate.data.repository.home.HomeRepositoryImpl
 import javax.inject.Singleton
 
 @Module
@@ -22,4 +24,9 @@ object RepositoryModule {
     @Singleton
     fun providesProfileDataSource(profileDataSource: DummyProfile): ProfileDataSource =
         profileDataSource
+
+    @Provides
+    @Singleton
+    fun providesAuthRepository(authRepository: AuthRepositoryImpl): AuthRepository =
+        authRepository
 }

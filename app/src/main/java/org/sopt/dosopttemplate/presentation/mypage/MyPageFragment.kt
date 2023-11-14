@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.datasource.local.DoSoptStorage
-import org.sopt.dosopttemplate.data.entity.sign.SignInfo
+import org.sopt.dosopttemplate.data.entity.auth.AuthInfo
 import org.sopt.dosopttemplate.databinding.FragmentMypageBinding
 import org.sopt.dosopttemplate.presentation.auth.LoginActivity
 import org.sopt.dosopttemplate.presentation.auth.LoginActivity.Companion.SIGN_INFO
@@ -23,12 +23,12 @@ class MyPageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
 
     private fun initMainPageSetting() {
         val intent = requireActivity().intent
-        val userInfo = intent.extras?.parcelable<SignInfo>(SIGN_INFO)
+        val userInfo = intent.extras?.parcelable<AuthInfo>(SIGN_INFO)
 
         if (userInfo != null) {
             binding.tvMainpageNickname.text = userInfo.name
-            binding.tvMainpageId.text = userInfo.id
-            binding.tvMainpageMbti.text = userInfo.mbti
+            binding.tvMainpageId.text = userInfo.username
+            binding.tvMainpageMbti.text = DoSoptStorage.mbti
         }
     }
 
