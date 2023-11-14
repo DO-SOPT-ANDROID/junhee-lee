@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.data.entity.home.FriendProfileEntity
 import org.sopt.dosopttemplate.data.entity.home.Profile
 import org.sopt.dosopttemplate.data.entity.home.Profile.FriendProfile.Companion.toFriendProfile
-import org.sopt.dosopttemplate.data.repository.Home.HomeRepository
+import org.sopt.dosopttemplate.data.repository.home.HomeRepository
 import java.time.LocalDate
 import javax.inject.Inject
 

@@ -1,6 +1,5 @@
-package org.sopt.dosopttemplate.data.repository.Home
+package org.sopt.dosopttemplate.data.repository.home
 
-import android.util.Log
 import org.sopt.dosopttemplate.data.database.FriendProfileDataBase
 import org.sopt.dosopttemplate.data.datasource.local.ProfileDataSource
 import org.sopt.dosopttemplate.data.entity.home.FriendProfileEntity
@@ -10,9 +9,7 @@ import javax.inject.Inject
 class HomeRepositoryImpl @Inject constructor(
     private val dataSource: ProfileDataSource,
     private val friendDataBase: FriendProfileDataBase
-) :
-    HomeRepository {
-
+) : HomeRepository {
     override suspend fun getDefaultProfile(): Result<List<Profile>> {
         return runCatching {
             val profileList = dataSource.getProfileList()

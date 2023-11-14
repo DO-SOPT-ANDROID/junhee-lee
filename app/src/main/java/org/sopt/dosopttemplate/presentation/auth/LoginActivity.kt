@@ -4,19 +4,18 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
-import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.datasource.local.DoSoptStorage
-import org.sopt.dosopttemplate.data.entity.sign.SignInfo
+import org.sopt.dosopttemplate.data.entity.auth.AuthInfo
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
 import org.sopt.dosopttemplate.presentation.home.HomeActivity
+import org.sopt.dosopttemplate.util.UiState
 import org.sopt.dosopttemplate.util.binding.BindingActivity
-import org.sopt.dosopttemplate.util.extension.hideKeyboard
-import org.sopt.dosopttemplate.util.extension.parcelable
 import org.sopt.dosopttemplate.util.extension.setOnSingleClickListener
 import org.sopt.dosopttemplate.util.extension.showSnackbar
 import org.sopt.dosopttemplate.util.extension.showToast
@@ -24,8 +23,8 @@ import org.sopt.dosopttemplate.util.extension.showToast
 @AndroidEntryPoint
 class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
+    private val loginViewModel: LoginViewModel by viewModels()
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-    private lateinit var signData: SignInfo
     private var backPressedTime = ZERO
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -43,7 +42,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        autoLogin()
+        checkAutoLogin()
         setResultSignUp()
         moveToSignUp()
         clickLoginButton()
@@ -54,29 +53,10 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
-    private fun autoLogin() {
-        val savedId = DoSoptStorage.getUserInfo()?.id
-        val savedPw = DoSoptStorage.getUserInfo()?.password
-        val savedName = DoSoptStorage.getUserInfo()?.name
-        val savedMbti = DoSoptStorage.getUserInfo()?.mbti
-
-        if (savedId != null && savedPw != null) {
-            val signInfo = SignInfo(
-                savedId,
-                savedPw,
-                savedName.toString(),
-                savedMbti.toString(),
-            )
-            moveToHome(signInfo)
-        }
-    }
-
     private fun setResultSignUp() {
         resultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == RESULT_OK) {
-                    signData = result.data?.parcelable<SignInfo>(SIGN_INFO)
-                        ?: return@registerForActivityResult
                     showSnackbar(binding.root, getString(R.string.signup_complete_message))
                 }
             }
@@ -84,34 +64,51 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
     private fun clickLoginButton() {
         binding.btnLogin.setOnSingleClickListener {
-            if (checkLoginValid()) {
-                moveToHome(signData)
+            val userId = binding.etLoginId.text.toString()
+            val userPw = binding.etLoginPw.text.toString()
+
+            loginViewModel.signIn(userId, userPw)
+            observeLogin()
+        }
+    }
+
+    private fun observeLogin() {
+        loginViewModel.signInResult.observe(this) { uiState ->
+            when (uiState) {
+                is UiState.Success -> {
+                    setAutoLogin(uiState.data)
+                    moveToHome(uiState.data)
+                }
+
+                is UiState.Failure -> {
+                    showSnackbar(binding.root, getString(R.string.login_fail))
+                }
+
+                else -> {}
             }
         }
     }
 
-    private fun checkLoginValid(): Boolean {
-        return if (binding.etLoginId.text.toString() == signData.id && binding.etLoginPw.text.toString() == signData.password) {
-            saveSignInfo()
-            true
-        } else {
-            showToast(getString(R.string.login_fail))
-            false
-        }
-    }
-
-    private fun saveSignInfo() {
+    private fun setAutoLogin(signData: AuthInfo) {
         if (binding.cbLogin.isChecked) {
             DoSoptStorage.setUserInfo(signData)
+            DoSoptStorage.isLogin = true
         }
     }
 
-    private fun moveToHome(userData: SignInfo) {
+    private fun checkAutoLogin() {
+        if (DoSoptStorage.isLogin) {
+            val userData = DoSoptStorage.getUserInfo()
+            moveToHome(userData)
+        }
+    }
+
+    private fun moveToHome(userData: AuthInfo) {
         val intent = Intent(this, HomeActivity::class.java).apply {
             putExtra(SIGN_INFO, userData)
             addFlags(FLAG_ACTIVITY_CLEAR_TASK or FLAG_ACTIVITY_NEW_TASK)
         }
-        showToast(getString(R.string.login_success))
+        showToast(getString(R.string.login_success) + if (DoSoptStorage.userId == 0) userData.id else DoSoptStorage.userId)
         startActivity(intent)
     }
 
