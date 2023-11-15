@@ -15,12 +15,11 @@
 
         <TextView
             android:id="@+id/tv_signup_title"
+            style="@style/Headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="@string/signup_title"
-            android:textSize="30sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,18 +36,18 @@
 
                 <TextView
                     android:id="@+id/tv_signup_name"
+                    style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/signup_nickname"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/et_signup_name"
+                    style="@style/Subtitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
@@ -62,19 +61,19 @@
 
                 <TextView
                     android:id="@+id/tv_signup_id"
+                    style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/signup_id"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/et_signup_name" />
 
 
                 <EditText
                     android:id="@+id/et_signup_id"
+                    style="@style/Subtitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
@@ -88,18 +87,18 @@
 
                 <TextView
                     android:id="@+id/tv_signup_pw"
+                    style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/signup_pw"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/et_signup_id" />
 
                 <EditText
                     android:id="@+id/et_signup_pw"
+                    style="@style/Subtitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
@@ -113,18 +112,18 @@
 
                 <TextView
                     android:id="@+id/tv_signup_mbti"
+                    style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/signup_mbti"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/et_signup_pw" />
 
                 <EditText
                     android:id="@+id/et_signup_mbti"
+                    style="@style/Subtitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
@@ -141,6 +140,7 @@
 
         <Button
             android:id="@+id/btn_signup_end"
+            style="@style/Subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"

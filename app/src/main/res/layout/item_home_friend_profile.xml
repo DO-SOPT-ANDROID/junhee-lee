@@ -21,12 +21,11 @@
 
     <TextView
         android:id="@+id/tv_home_friend_name"
+        style="@style/Headline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="40dp"
-        android:textSize="15sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/iv_home_friend_profile"
         app:layout_constraintStart_toEndOf="@id/iv_home_friend_profile"
         app:layout_constraintTop_toTopOf="@id/iv_home_friend_profile"
@@ -45,6 +44,7 @@
 
     <TextView
         android:id="@+id/tv_home_friend_gift"
+        style="@style/Caption1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -73,6 +73,7 @@
 
         <TextView
             android:id="@+id/tv_home_friend_music_name"
+            style="@style/Caption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

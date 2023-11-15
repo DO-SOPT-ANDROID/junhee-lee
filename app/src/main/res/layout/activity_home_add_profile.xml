@@ -23,18 +23,18 @@
 
                 <TextView
                     android:id="@+id/tv_home_add_name"
+                    style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/home_add_name"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/et_home_add_name"
+                    style="@style/Subtitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
@@ -48,18 +48,18 @@
 
                 <TextView
                     android:id="@+id/tv_home_add_music"
+                    style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/home_add_music"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/et_home_add_name" />
 
                 <EditText
                     android:id="@+id/et_home_add_music"
+                    style="@style/Subtitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
@@ -72,18 +72,18 @@
 
                 <TextView
                     android:id="@+id/tv_home_add_birthday"
+                    style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/home_add_birthday"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/et_home_add_music" />
 
                 <EditText
                     android:id="@+id/et_home_add_birthday"
+                    style="@style/Subtitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -108,6 +108,7 @@
 
         <Button
             android:id="@+id/btn_home_add"
+            style="@style/Subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"

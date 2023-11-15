@@ -15,13 +15,11 @@
 
         <TextView
             android:id="@+id/tv_login_title"
+            style="@style/Headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:text="@string/login_title"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,13 +36,12 @@
 
                 <TextView
                     android:id="@+id/tv_login_id"
+                    style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/login_id"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,6 +59,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_login_id"
+                        style="@style/Subtitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/login_id_hint"
@@ -84,6 +82,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_login_pw"
+                        style="@style/Subtitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/login_pw_hint"
@@ -94,13 +93,12 @@
 
                 <TextView
                     android:id="@+id/tv_login_pw"
+                    style="@style/Headline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/login_pw"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/til_login_id" />
 
@@ -116,6 +114,7 @@
 
                 <TextView
                     android:id="@+id/tv_login_auto"
+                    style="@style/Subtitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/login_auto"
@@ -129,6 +128,7 @@
 
         <Button
             android:id="@+id/btn_login"
+            style="@style/Subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
@@ -140,6 +140,7 @@
 
         <Button
             android:id="@+id/btn_signup"
+            style="@style/Subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
