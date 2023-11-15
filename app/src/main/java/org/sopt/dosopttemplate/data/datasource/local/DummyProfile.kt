@@ -36,7 +36,7 @@ class DummyProfile @Inject constructor() : ProfileDataSource {
             Profile.FriendProfile(
                 profileImage = R.drawable.img_eagle,
                 name = "독수리",
-                birthday = LocalDate.of(2023, 11, 15),
+                birthday = LocalDate.of(2023, 8, 15),
                 music = "\"Bad Guy\" - Billie Eilish",
                 isTodayBirthday = false,
                 isMusicRegist = false,
