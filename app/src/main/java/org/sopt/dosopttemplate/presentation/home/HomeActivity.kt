@@ -11,6 +11,7 @@ import org.sopt.dosopttemplate.databinding.ActivityHomeBinding
 import org.sopt.dosopttemplate.presentation.android.DoAndroidFragment
 import org.sopt.dosopttemplate.presentation.auth.LoginActivity.Companion.TWO_SECONDS
 import org.sopt.dosopttemplate.presentation.auth.LoginActivity.Companion.ZERO
+import org.sopt.dosopttemplate.presentation.follower.FollowerFragment
 import org.sopt.dosopttemplate.presentation.mypage.MyPageFragment
 import org.sopt.dosopttemplate.util.binding.BindingActivity
 import org.sopt.dosopttemplate.util.extension.showToast
@@ -67,6 +68,7 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
                 R.id.menu_home -> navigateTo<HomeFragment>()
                 R.id.menu_do_android -> navigateTo<DoAndroidFragment>()
                 R.id.menu_mypage -> navigateTo<MyPageFragment>()
+                R.id.menu_follower -> navigateTo<FollowerFragment>()
                 else -> false
             }
             true

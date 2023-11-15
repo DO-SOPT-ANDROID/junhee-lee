@@ -5,18 +5,24 @@
     <item
         android:id="@+id/menu_do_android"
         android:icon="@drawable/ic_do_android_black_24"
-        android:title="DO ANDROID" />
+        android:title="@string/bnv_android" />
 
     <!-- Home -->
     <item
         android:id="@+id/menu_home"
         android:icon="@drawable/ic_home_black_24"
-        android:title="홈" />
+        android:title="@string/bnv_home" />
 
     <!-- MyPage -->
     <item
         android:id="@+id/menu_mypage"
         android:icon="@drawable/ic_person_black_24"
-        android:title="마이페이지" />
+        android:title="@string/bnv_mypage" />
+
+    <!-- Follower -->
+    <item
+        android:id="@+id/menu_follower"
+        android:icon="@drawable/ic_follower_black_24"
+        android:title="@string/bnv_follower" />
 
 </menu>
