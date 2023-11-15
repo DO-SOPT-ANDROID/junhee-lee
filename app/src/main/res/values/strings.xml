@@ -28,6 +28,7 @@
     <string name="signup_complete">완료</string>
     <string name="signup_complete_message">회원가입이 완료되었습니다</string>
     <string name="signup_error_message">올바른 정보를 입력해주세요</string>
+    <string name="signup_fail_message">회원가입에 실패하였습니다.</string>
 
     <!-- 메인 페이지 -->
     <string name="mainpage_id">ID</string>
@@ -50,6 +51,11 @@
     <string name="dialog_apply_text">확인</string>
     <string name="dialog_home_user_delete_title">정말로 삭제하시겠습니까?</string>
     <string name="dialog_date_format">%04d%02d%02d</string>
-    <string name="signup_fail_message">회원가입에 실패하였습니다.</string>
+
+    <!-- 바텀 네비게이션 -->
+    <string name="bnv_android">DO ANDROID</string>
+    <string name="bnv_home">홈</string>
+    <string name="bnv_mypage">마이페이지</string>
+    <string name="bnv_follower">팔로워</string>
 
 </resources>

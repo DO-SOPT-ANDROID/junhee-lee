@@ -9,7 +9,7 @@ import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
@@ -20,7 +20,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private var isFabOpen = false
     private val isLandscape by lazy { resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE }
-    private val homeViewModel by activityViewModels<HomeViewModel>()
+    private val homeViewModel: HomeViewModel by viewModels()
     private val homeRvAdapter by lazy {
         HomeRecyclerAdapter(
             onClick = moveToProfileDetail(),
