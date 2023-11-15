@@ -18,19 +18,19 @@
 
     <TextView
         android:id="@+id/tv_vp_home_my_name"
+        style="@style/Headline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
-        android:textSize="30sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/iv_vp_home_myprofile"
         app:layout_constraintTop_toTopOf="@id/iv_vp_home_myprofile"
         tools:text="이준희" />
 
     <TextView
         android:id="@+id/tv_vp_home_state_message"
+        style="@style/Caption1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

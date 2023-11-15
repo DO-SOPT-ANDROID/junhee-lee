@@ -19,12 +19,11 @@
 
     <TextView
         android:id="@+id/tv_vp_home_friend_name"
+        style="@style/Headline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
-        android:textSize="30sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/iv_vp_home_friend_profile"
         app:layout_constraintTop_toTopOf="@id/iv_vp_home_friend_profile"
         tools:text="이준희" />
@@ -42,6 +41,7 @@
 
     <TextView
         android:id="@+id/tv_vp_home_friend_gift"
+        style="@style/Caption1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -66,6 +66,7 @@
 
         <TextView
             android:id="@+id/tv_vp_home_friend_music_name"
+            style="@style/Caption1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"

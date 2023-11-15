@@ -28,6 +28,7 @@
 
         <TextView
             android:id="@+id/btn_left"
+            style="@style/Body_B1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -35,12 +36,13 @@
             android:paddingHorizontal="14dp"
             android:paddingVertical="7dp"
             android:text="@string/dialog_cancel_text"
-            android:textColor="@color/black"
+            android:textColor="@color/Gray_600"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_right" />
 
         <TextView
             android:id="@+id/btn_right"
+            style="@style/Body_B1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -49,7 +51,7 @@
             android:paddingHorizontal="14dp"
             android:paddingVertical="7dp"
             android:text="@string/dialog_apply_text"
-            android:textColor="@color/black"
+            android:textColor="@color/Gray_600"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btn_left" />
