@@ -142,6 +142,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     companion object {
         const val PROFILE_LIST = "profile"
-        private const val TOP_POSITION = 0
+        const val TOP_POSITION = 0
     }
 }

@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import org.sopt.dosopttemplate.data.service.AuthService
 import org.sopt.dosopttemplate.data.service.FollowerService
 import retrofit2.Retrofit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -16,10 +17,10 @@ object ServiceModule {
 
     @Provides
     @Singleton
-    fun provideAuthService(retrofit: Retrofit): AuthService = retrofit.create()
+    fun provideAuthService(@Named("auth")retrofit: Retrofit): AuthService = retrofit.create()
 
     @Provides
     @Singleton
-    fun provideFollowerService(retrofit: Retrofit): FollowerService = retrofit.create()
+    fun provideFollowerService(@Named("reqres")retrofit: Retrofit): FollowerService = retrofit.create()
 
 }

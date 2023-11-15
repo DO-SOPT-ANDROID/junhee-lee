@@ -5,9 +5,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface FollowerService {
-    @GET("/api/users")
+    @GET("api/users/")
     suspend fun getFollowerList(
         @Query("page") page: Int = 2
-    ): List<ResponseFollowerDto.Data>
+    ): ResponseFollowerDto
 
 }

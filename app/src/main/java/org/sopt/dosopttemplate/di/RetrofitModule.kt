@@ -11,8 +11,10 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.sopt.dosopttemplate.BuildConfig.BASE_URL
+import org.sopt.dosopttemplate.BuildConfig.REQRES_BASE_URL
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -40,15 +42,17 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    @Logger
+    @Named("logger")
     fun provideHttpLoggingInterceptor(): Interceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
+
     @Provides
     @Singleton
-    fun providesOkHttpClient(
-        @Logger loggingInterceptor: Interceptor,
+    @Named("auth")
+    fun provideAuthOkHttpClient(
+        @Named("logger") loggingInterceptor: Interceptor,
     ): OkHttpClient =
         OkHttpClient
             .Builder()
@@ -58,8 +62,29 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun providesAuthRetrofit(okHttpClient: OkHttpClient): Retrofit =
+    @Named("reqres")
+    fun provideReqresOkHttpClient(
+        @Named("logger") loggingInterceptor: Interceptor,
+    ): OkHttpClient =
+        OkHttpClient
+            .Builder()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS).readTimeout(10, TimeUnit.SECONDS)
+            .addInterceptor(loggingInterceptor).build()
+
+    @Provides
+    @Singleton
+    @Named("auth")
+    fun provideAuthRetrofit(@Named("auth") okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder().baseUrl(BASE_URL).client(okHttpClient).addConverterFactory(
+            Json.asConverterFactory("application/json".toMediaType()),
+        ).build()
+
+    @Provides
+    @Singleton
+    @Named("reqres")
+    fun provideReqresRetrofit(@Named("reqres") okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder().baseUrl(REQRES_BASE_URL).client(okHttpClient).addConverterFactory(
             Json.asConverterFactory("application/json".toMediaType()),
         ).build()
 }
