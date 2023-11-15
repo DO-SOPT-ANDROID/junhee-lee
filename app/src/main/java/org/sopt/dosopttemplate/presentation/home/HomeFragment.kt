@@ -14,7 +14,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
 import org.sopt.dosopttemplate.util.binding.BindingFragment
-import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -133,6 +132,12 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                 homeViewModel.fetchProfileList()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        binding.rvHome.adapter = null
+        binding.vpHome.adapter = null
+        super.onDestroyView()
     }
 
     companion object {
