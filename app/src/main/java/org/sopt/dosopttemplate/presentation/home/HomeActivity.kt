@@ -46,11 +46,18 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
     private fun doubleClickBottomNavigation() {
         binding.bnvHome.setOnItemReselectedListener {
             supportFragmentManager.findFragmentById(R.id.fcv_home)?.let { currentFragment ->
-                if (currentFragment is HomeFragment) {
-                    currentFragment.goToTop()
+                when (currentFragment) {
+                    is HomeFragment -> {
+                        currentFragment.goToTop()
+                    }
+
+                    is FollowerFragment -> {
+                        currentFragment.goToTop()
+                    }
                 }
             }
         }
+
     }
 
     private fun initFragment() {
