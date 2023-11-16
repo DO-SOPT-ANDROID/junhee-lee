@@ -28,7 +28,7 @@ class DummyProfile @Inject constructor() : ProfileDataSource {
             Profile.FriendProfile(
                 profileImage = R.drawable.img_dog,
                 name = "강아지",
-                birthday = LocalDate.of(2023, 11, 16),
+                birthday = LocalDate.of(2023, 11, 3),
                 music = "\"Shape of You\" - Ed Sheeran",
                 isTodayBirthday = false,
                 isMusicRegist = false,
