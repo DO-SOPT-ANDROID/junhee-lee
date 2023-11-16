@@ -19,10 +19,16 @@ class FollowerFragment : BindingFragment<FragmentFollowerBinding>(R.layout.fragm
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val followerAdapter = FollowerAdapter()
+        init()
+        observeFollowerList()
+    }
 
+    private fun init() {
         followerViewModel.getFollowerList()
+    }
 
+    private fun observeFollowerList() {
+        val followerAdapter = FollowerAdapter()
         followerViewModel.followerList.observe(viewLifecycleOwner) { uiState ->
             when (uiState) {
                 is UiState.Success -> {
