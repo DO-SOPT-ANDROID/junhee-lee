@@ -13,7 +13,7 @@
                 android:alpha="1"
                 android:translationY="-100dp"
                 motion:framePosition="50"
-                motion:motionTarget="@+id/imageView_full_logo" />
+                motion:motionTarget="@+id/iv_splash" />
 
             <KeyAttribute
                 android:alpha="1"
@@ -25,7 +25,7 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/imageView_full_logo"
+            android:id="@+id/iv_splash"
             android:layout_width="100dp"
             android:layout_height="100dp"
             motion:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +36,7 @@
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/imageView_full_logo"
+            android:id="@+id/iv_splash"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="parent"

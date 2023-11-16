@@ -19,13 +19,8 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //1st, make splash activity
-
-        // hide action bar
-        supportActionBar?.hide()
-
         lifecycleScope.launch{
-            delay(10000)
+            delay(3000)
             startActivity<LoginActivity>()
             finish()
         }

@@ -8,18 +8,46 @@
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/layout_motiion"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/Gray_600"
-        app:layoutDescription="@xml/activity_splash_scene"
+        app:layoutDescription="@xml/activity_splash_xml_layout_motiion_scene"
         tools:context=".presentation.SplashActivity">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_background"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_splash"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
-            android:id="@+id/imageView_full_logo"
-            android:layout_width="100dp"
+            android:id="@+id/iv_splash_green"
+            android:layout_width="150dp"
             android:layout_height="0dp"
             android:src="@drawable/bg_android"
-            app:layout_constraintDimensionRatio="1"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_splash_black"
+            android:layout_width="150dp"
+            android:layout_height="0dp"
+            android:src="@drawable/bg_android"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/Gray_600" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>
