@@ -7,6 +7,19 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="Splash" parent="Theme.Material3.Light.NoActionBar">
+        <!-- 상태바 컬러 -->
+        <item name="android:statusBarColor">@color/Gray_600</item>
+        <!-- 타이틀바 제거 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 액션바 제거 -->
+        <item name="android:windowActionBar">false</item>
+        <!-- 앱이 켜질 때 미리보기 제거 -->
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+
+
 
     <style name="Theme.DoSoptTemplate" parent="Base.Theme.DoSoptTemplate" />
 </resources>
