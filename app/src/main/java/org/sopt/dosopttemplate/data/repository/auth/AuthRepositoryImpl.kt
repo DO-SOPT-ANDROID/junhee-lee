@@ -5,7 +5,6 @@ import org.sopt.dosopttemplate.data.service.AuthService
 import org.sopt.dosopttemplate.data.source.request.RequestSignInDto
 import org.sopt.dosopttemplate.data.source.request.RequestSignUpDto
 import org.sopt.dosopttemplate.data.source.response.ResponseSignInDto
-import retrofit2.Response
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(private val authService: AuthService) :
@@ -14,21 +13,15 @@ class AuthRepositoryImpl @Inject constructor(private val authService: AuthServic
         username: String,
         password: String,
         nickname: String
-    ): Response<Unit> {
-        return authService.postSignUpInfo(RequestSignUpDto(username, password, nickname))
+    ): Result<Unit> = runCatching {
+        authService.postSignUpInfo(RequestSignUpDto(username, password, nickname))
     }
 
     override suspend fun postSignInInfo(
         username: String,
         password: String
-    ): Result<AuthInfo> {
-        return runCatching {
-            convertToAuthInfo(authService.postSignInInfo(RequestSignInDto(username, password)))
-        }.onSuccess { result ->
-            Result.success(result)
-        }.onFailure { exception ->
-            Result.failure<AuthInfo>(exception)
-        }
+    ): Result<AuthInfo> = runCatching {
+        convertToAuthInfo(authService.postSignInInfo(RequestSignInDto(username, password)))
     }
 
     private fun convertToAuthInfo(signInResponse: ResponseSignInDto): AuthInfo {

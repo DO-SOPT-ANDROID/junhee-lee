@@ -10,33 +10,16 @@ class HomeRepositoryImpl @Inject constructor(
     private val dataSource: ProfileDataSource,
     private val friendDataBase: FriendProfileDataBase
 ) : HomeRepository {
-    override suspend fun getDefaultProfile(): Result<List<Profile>> {
-        return runCatching {
-            val profileList = dataSource.getProfileList()
-            profileList
-        }.fold(
-            onSuccess = {
-                Result.success(it)
-            },
-            onFailure = { exception ->
-                Result.failure(exception)
-            }
-        )
+    override suspend fun getDefaultProfile(): Result<List<Profile>> = runCatching {
+        dataSource.getProfileList()
     }
 
-    override suspend fun getProfileList(): Result<List<FriendProfileEntity>> {
-        return runCatching {
-            val profileList = friendDataBase.dao().getAll()
-            profileList
-        }.fold(
-            onSuccess = {
-                Result.success(it)
-            },
-            onFailure = { exception ->
-                Result.failure(exception)
-            },
-        )
+
+    override suspend fun getProfileList(): Result<List<FriendProfileEntity>> = runCatching {
+        friendDataBase.dao().getAll()
+
     }
+
 
     override suspend fun addFriend(friend: FriendProfileEntity) {
         friendDataBase.dao().add(friend)

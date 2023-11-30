@@ -20,17 +20,15 @@ class SignUpViewModel @Inject constructor(
 
     fun signUp(username: String, password: String, nickname: String) {
         viewModelScope.launch {
-            runCatching {
-                authRepository.postSignUpInfo(
-                    username = username,
-                    password = password,
-                    nickname = nickname
-                )
-            }.onSuccess {
-                _signUpResult.value = UiState.Success(true)
-            }.onFailure { throwable ->
-                _signUpResult.value = throwable.message?.let { UiState.Failure(it) }
-            }
+            authRepository.postSignUpInfo(
+                username = username,
+                password = password,
+                nickname = nickname
+            ).onSuccess { _signUpResult.value = UiState.Success(true) }
+
+                .onFailure { throwable ->
+                    _signUpResult.value = throwable.message?.let { UiState.Failure(it) }
+                }
         }
     }
 }
