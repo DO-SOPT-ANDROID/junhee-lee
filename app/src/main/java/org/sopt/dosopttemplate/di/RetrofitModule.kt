@@ -10,6 +10,7 @@ import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.sopt.dosopttemplate.BuildConfig
 import org.sopt.dosopttemplate.BuildConfig.BASE_URL
 import org.sopt.dosopttemplate.BuildConfig.REQRES_BASE_URL
 import retrofit2.Retrofit
@@ -44,7 +45,11 @@ object RetrofitModule {
     @Singleton
     @Named("logger")
     fun provideHttpLoggingInterceptor(): Interceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
+        level = if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor.Level.BODY
+        } else {
+            HttpLoggingInterceptor.Level.NONE
+        }
     }
 
 
