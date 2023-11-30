@@ -6,9 +6,7 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.datasource.local.DoSoptStorage
-import org.sopt.dosopttemplate.data.entity.auth.AuthInfo
 import org.sopt.dosopttemplate.databinding.ActivitySignupBinding
-import org.sopt.dosopttemplate.presentation.auth.LoginActivity.Companion.SIGN_INFO
 import org.sopt.dosopttemplate.util.UiState
 import org.sopt.dosopttemplate.util.binding.BindingActivity
 import org.sopt.dosopttemplate.util.extension.setOnSingleClickListener
