@@ -31,8 +31,8 @@
     <string name="signup_fail_message">회원가입에 실패하였습니다.</string>
     <string name="signup_id_error">숫자와 영문자 조합으로 6~10자를 사용해주세요</string>
     <string name="signup_pw_error">영문,숫자, 특수문자를 포함한 6~12글자 이내를 사용해주세요</string>
-    <string name="signup_id_empty">id를 입력해주세요</string>
-    <string name="signup_pw_empty">pw를 입력해주세요</string>
+    <string name="signup_nickname_empty">닉네임이 입력되지 않았습니다</string>
+
     <!-- 메인 페이지 -->
     <string name="mainpage_id">ID</string>
     <string name="mainpage_mbti">MBTI</string>
