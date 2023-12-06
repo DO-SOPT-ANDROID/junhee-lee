@@ -47,6 +47,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         moveToSignUp()
         clickLoginButton()
         finishApplication()
+        observeLogin()
     }
 
     private fun finishApplication() {
@@ -68,7 +69,6 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             val userPw = binding.etLoginPw.text.toString()
 
             loginViewModel.signIn(userId, userPw)
-            observeLogin()
         }
     }
 

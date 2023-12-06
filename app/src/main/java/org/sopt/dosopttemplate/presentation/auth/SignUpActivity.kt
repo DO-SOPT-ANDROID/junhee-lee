@@ -31,6 +31,7 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
         observeId()
         observePw()
         observeSignUpButton()
+        observeSignUp()
     }
 
     private fun observeSignUpButton() {
@@ -71,7 +72,6 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
         binding.btnSignupEnd.setOnSingleClickListener {
             getSignUpInfo()
             signUpViewModel.signUp()
-            observeSignUp()
         }
     }
 
