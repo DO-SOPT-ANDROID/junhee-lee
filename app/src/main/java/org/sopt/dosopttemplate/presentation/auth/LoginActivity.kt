@@ -8,7 +8,11 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.datasource.local.DoSoptStorage
 import org.sopt.dosopttemplate.data.entity.auth.AuthInfo
@@ -73,7 +77,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     }
 
     private fun observeLogin() {
-        loginViewModel.signInResult.observe(this) { uiState ->
+        loginViewModel.signInState.flowWithLifecycle(lifecycle).onEach { uiState ->
             when (uiState) {
                 is UiState.Success -> {
                     setAutoLogin(uiState.data)
@@ -86,7 +90,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
                 else -> {}
             }
-        }
+        }.launchIn(lifecycleScope)
     }
 
     private fun setAutoLogin(signData: AuthInfo) {

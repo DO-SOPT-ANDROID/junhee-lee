@@ -6,7 +6,11 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.datasource.local.DoSoptStorage
 import org.sopt.dosopttemplate.databinding.ActivitySignupBinding
@@ -76,7 +80,7 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
     }
 
     private fun observeSignUp() {
-        signUpViewModel.signUpResult.observe(this) { uiState ->
+        signUpViewModel.signUpState.flowWithLifecycle(lifecycle).onEach { uiState ->
             when (uiState) {
                 is UiState.Success -> {
                     val intent = Intent(this, LoginActivity::class.java)
@@ -91,7 +95,7 @@ class SignUpActivity : BindingActivity<ActivitySignupBinding>(R.layout.activity_
 
                 else -> {}
             }
-        }
+        }.launchIn(lifecycleScope)
     }
 
     private fun getSignUpInfo() {

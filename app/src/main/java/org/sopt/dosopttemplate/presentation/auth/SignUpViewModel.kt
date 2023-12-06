@@ -1,16 +1,18 @@
 package org.sopt.dosopttemplate.presentation.auth
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.data.repository.auth.AuthRepository
 import org.sopt.dosopttemplate.util.UiState
 import org.sopt.dosopttemplate.util.extension.addSourceList
+import timber.log.Timber
 import java.util.regex.Pattern
 import javax.inject.Inject
 
@@ -19,8 +21,8 @@ class SignUpViewModel @Inject constructor(
     private val authRepository: AuthRepository,
 ) : ViewModel() {
 
-    private val _signUpResult = MutableLiveData<UiState<Boolean>>()
-    val signUpResult: LiveData<UiState<Boolean>> = _signUpResult
+    private val _signUpState = MutableStateFlow<UiState<Boolean>>(UiState.Loading)
+    val signUpState get() = _signUpState.asStateFlow()
 
     val id = MutableLiveData("")
     val pw = MutableLiveData("")
@@ -41,10 +43,10 @@ class SignUpViewModel @Inject constructor(
                 username = id.value.toString(),
                 password = pw.value.toString(),
                 nickname = nickname.value.toString()
-            ).onSuccess { _signUpResult.value = UiState.Success(true) }
+            ).onSuccess { _signUpState.value = UiState.Success(true) }
 
                 .onFailure { throwable ->
-                    _signUpResult.value = throwable.message?.let { UiState.Failure(it) }
+                    Timber.e(throwable.message)
                 }
         }
     }
