@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="signupViewModel"
+            type="org.sopt.dosopttemplate.presentation.auth.SignUpViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,9 +59,22 @@
                     android:hint="@string/signup_nickname_hint"
                     android:imeOptions="actionNext"
                     android:inputType="text"
+                    android:text="@={signupViewModel.nickname}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_signup_name" />
+
+                <TextView
+                    android:id="@+id/tv_signup_nickname_error_message"
+                    style="@style/Caption2"
+                    setSignupZeroErrorTextVisible="@{signupViewModel.nicknameLength}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/signup_nickname_empty"
+                    android:textColor="@color/Pink_500"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/et_signup_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_signup_name" />
 
                 <TextView
                     android:id="@+id/tv_signup_id"
@@ -81,9 +98,21 @@
                     android:hint="@string/signup_id_hint"
                     android:imeOptions="actionNext"
                     android:inputType="text"
+                    android:text="@={signupViewModel.id}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_signup_id" />
+
+                <TextView
+                    android:id="@+id/tv_signup_id_error_message"
+                    style="@style/Caption2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/signup_id_error"
+                    android:textColor="@color/Pink_500"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/et_signup_id"
+                    app:layout_constraintTop_toBottomOf="@+id/et_signup_id" />
 
                 <TextView
                     android:id="@+id/tv_signup_pw"
@@ -106,9 +135,21 @@
                     android:hint="@string/signup_pw_hint"
                     android:imeOptions="actionNext"
                     android:inputType="textPassword"
+                    android:text="@={signupViewModel.pw}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_signup_pw" />
+
+                <TextView
+                    android:id="@+id/tv_signup_password_error_message"
+                    style="@style/Caption2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/signup_pw_error"
+                    android:textColor="@color/Pink_500"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/et_signup_pw"
+                    app:layout_constraintTop_toBottomOf="@+id/et_signup_pw" />
 
                 <TextView
                     android:id="@+id/tv_signup_mbti"
@@ -131,6 +172,7 @@
                     android:hint="@string/signup_mbti_hint"
                     android:imeOptions="actionDone"
                     android:inputType="text"
+                    android:text="@={signupViewModel.mbti}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_signup_mbti" />
@@ -145,6 +187,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginBottom="40dp"
+            android:enabled="false"
             android:text="@string/signup_complete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
